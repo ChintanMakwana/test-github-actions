@@ -19,3 +19,4 @@ jobs:
         password: ${{ secrets.ftp_password }}
         protocol: ftps
         server-dir: /var/www/html/test-env/staging/
+        port: 990
