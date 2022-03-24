@@ -11,12 +11,18 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
     
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.1
       with:
+        username: root
         server: 142.93.7.105
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        protocol: ftps
-        server-dir: /var/www/html/test-env/staging/
-        port: 22
+        port: 22 # default is 22
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+        # will put all file under this path
+        local_path: ./* # default is ./*
+        # files will copy to under remote_path
+        remote_path: /var/www/html/test-env/staging/
+        
+        # sftp args
+        args: '-o ConnectTimeout=5'
