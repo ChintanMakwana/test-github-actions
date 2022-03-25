@@ -11,7 +11,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.4
     
-    - name: SFTP Deploy
+    - name: 📂 SFTP Deploy
       id: upload
       uses: Creepios/sftp-action@v1.0.3
       with:
